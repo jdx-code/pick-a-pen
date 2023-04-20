@@ -1,0 +1,19 @@
+{
+  "name": "pick-a-pen",
+  "version": "1.0.0",
+  "description": "App to create public and private repos",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdx-code/pick-a-pen.git"
+  },
+  "author": "Jyotirmoy Das",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdx-code/pick-a-pen/issues"
+  },
+  "homepage": "https://github.com/jdx-code/pick-a-pen#readme"
+}
