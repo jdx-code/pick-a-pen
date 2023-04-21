@@ -2,6 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const exphbs = require('express-handlebars')
+const path = require('path')
 const connectDB = require('./config/db');
 
 // Load the config file (where our global variables are present)
@@ -20,6 +21,9 @@ if(process.env.NODE_ENV === 'development'){
 // Setting the view engine with handlebars
 app.engine('.hbs', exphbs.engine(({ defaultLayout: 'main', extname: '.hbs' })))
 app.set('view engine', '.hbs')
+
+// Static folder
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
 app.use('/', require('./routes/index'))
