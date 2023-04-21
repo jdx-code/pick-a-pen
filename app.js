@@ -19,7 +19,7 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 // Setting the view engine with handlebars
-app.engine('.hbs', exphbs.engine(({ defaultLayout: 'main', extname: '.hbs' })))
+app.engine('.hbs', exphbs.engine(({ defaultLayout: 'mainLayout', extname: '.hbs' })))
 app.set('view engine', '.hbs')
 
 // Static folder
