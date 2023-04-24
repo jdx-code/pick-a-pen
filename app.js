@@ -1,10 +1,12 @@
+const path = require('path')
 const express = require('express')
+const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const exphbs = require('express-handlebars')
 const passport = require('passport')
 const session = require('express-session')
-const path = require('path')
+const MongoStore = require('connect-mongo')
 const connectDB = require('./config/db');
 
 // Load the config file (where our global variables are present)
@@ -32,6 +34,10 @@ app.use(session({
     secret: 'some secret here',
     resave: false,              // means we don't want to save a session if nothing is modified
     saveUninitialized: false,   // means don't create a session until a something is stored 
+    store: MongoStore.create({ 
+        mongoUrl: process.env.MONGO_URI,
+        mongooseConnection: mongoose.connection 
+    })
 }))
 
 
