@@ -34,10 +34,11 @@ app.use(session({
     secret: 'some secret here',
     resave: false,              // means we don't want to save a session if nothing is modified
     saveUninitialized: false,   // means don't create a session until a something is stored 
-    store: MongoStore.create({ 
-        mongoUrl: process.env.MONGO_URI,
-        mongooseConnection: mongoose.connection 
-    })
+    // store: MongoStore.create({ 
+    //     mongoUrl: process.env.MONGO_URI,
+    //     mongooseConnection: mongoose.connection 
+    // })
+    store: MongoStore.create({mongoUrl: process.env.MONGO_URI,})
 }))
 
 // Passport middleware
