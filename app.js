@@ -37,7 +37,7 @@ app.engine('.hbs', exphbs.engine({
         helpers: {
             formatDate
         },
-        defaultLayout: 'mainLayout', 
+        defaultLayout: 'main', 
         extname: '.hbs' 
     })
 )
