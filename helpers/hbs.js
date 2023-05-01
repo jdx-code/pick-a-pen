@@ -22,10 +22,12 @@ module.exports = {
     },    
 
     editIcon: function (storyUser, loggedUser, storyId, floating = true) {
-      console.log('storyUser:', storyUser);
-      console.log('storyUser:', storyUser._id.toString());
-      console.log('loggedUser:', loggedUser);
-      console.log('storyId:', storyId);
+
+      console.log('storyUser:', storyUser);       // Returns the whole story object
+      console.log('storyUserId:', storyUser._id)  // Returns new ObjectId with Userid of the story
+      console.log('loggedUser:', loggedUser);     // Returns an object with id of the logged in user
+      console.log('storyId:', storyId);           // Returns new Object with id of the story
+      
         if (storyUser._id.toString() === loggedUser.id) {
         // if (storyUser._id.toString() === '6446244fe35c91b6f5019224') {          
           if (floating) {
