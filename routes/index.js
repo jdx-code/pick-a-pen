@@ -20,20 +20,10 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
             name: user.firstName,
             stories
         });
-    } catch (error) {
-        console.error(error);
+    } catch (err) {
+        console.error(err);
         res.render('error/500');
     }
-})
-
-// @desc    Logout user
-// @route   /auth/logout
-
-router.get('/logout', (req, res, next) => {
-    req.logout( (err) => {
-        if(err){return next(err)}
-        res.redirect('/')
-    })
 })
 
 module.exports = router

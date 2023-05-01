@@ -39,11 +39,17 @@ app.engine('.hbs', exphbs.engine({
             truncate,
             stripTags,
             editIcon,
+            json: function (context) {
+                return JSON.stringify(context);
+            }
         },
         defaultLayout: 'main', 
         extname: '.hbs' 
     })
 )
+ 
+app.set("view engine", "hbs");  
+app.set("views", "./views");
 app.set('view engine', '.hbs')
 
 // Sessions
@@ -51,10 +57,6 @@ app.use(session({
     secret: 'some secret here',
     resave: false,              // means we don't want to save a session if nothing is modified
     saveUninitialized: false,   // means don't create a session until a something is stored 
-    // store: MongoStore.create({ 
-    //     mongoUrl: process.env.MONGO_URI,
-    //     mongooseConnection: mongoose.connection 
-    // })
     store: MongoStore.create({mongoUrl: process.env.MONGO_URI,})
 }))
 
@@ -63,9 +65,8 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // Set global variable
-
 app.use(function (req, res, next) {    
-    res.locals.user = req.user || null       
+    res.locals.user = req.user || null    
     next()
 })
 

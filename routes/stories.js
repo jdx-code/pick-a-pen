@@ -24,7 +24,7 @@ router.post('/', ensureAuth, async (req, res) => {
 })
 
 // @desc    Show add page
-// @route   GET /stories/add
+// @route   GET /stories/
 router.get('/', ensureAuth, async (req, res) => {
     try{
         const stories = await Story.find({ status: 'public' })
@@ -33,8 +33,11 @@ router.get('/', ensureAuth, async (req, res) => {
             .lean()
 
             res.render('stories/index', {
-                stories,
+                stories,    
+                user: res.locals.user,
             })
+
+            console.log('User object passed to template:', res.locals.user);
     } catch (err){
         console.error(err)
         res.render('error/500')

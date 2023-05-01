@@ -22,8 +22,12 @@ module.exports = {
     },    
 
     editIcon: function (storyUser, loggedUser, storyId, floating = true) {
-        
-        if (storyUser._id.toString() === loggedUser._id.toString()) {
+      console.log('storyUser:', storyUser);
+      console.log('storyUser:', storyUser._id.toString());
+      console.log('loggedUser:', loggedUser);
+      console.log('storyId:', storyId);
+        if (storyUser._id.toString() === loggedUser.id) {
+        // if (storyUser._id.toString() === '6446244fe35c91b6f5019224') {          
           if (floating) {
             return `<a href="/stories/edit/${storyId}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>`
           } else {
@@ -33,16 +37,4 @@ module.exports = {
           return ''
         }
       },
-
-    // editIcon: function (storyUser, loggedUser, storyId, floating = true) {
-    //   if (storyUser._id.toString() === loggedUser._id.toString()) {
-    //     const editIconHtml = floating ? 
-    //       `<a href="/stories/edit/${storyId}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>` :
-    //       `<a href="/stories/edit/${storyId}"><i class="fas fa-edit"></i></a>`;
-    //     return new Handlebars.SafeString(editIconHtml);
-    //   } else {
-    //     return '';
-    //   }
-    // }
-    
 }
